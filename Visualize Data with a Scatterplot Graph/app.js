@@ -352,7 +352,6 @@ const data = [
     "Doping": "",
     "URL": ""
   }
-]
 ];
 
 // Set dimensions and margins
