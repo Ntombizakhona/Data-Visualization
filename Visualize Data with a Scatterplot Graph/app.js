@@ -1,8 +1,7 @@
 // app.js
 
-// Sample data (replace this with your actual data loading logic)
+// Data 
 const data = [
-[
   {
     "Time": "36:50",
     "Place": 1,
