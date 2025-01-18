@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heat Map</title>
+    <style>
+        /* Add some basic styling */
+        .cell {
+            stroke: #ccc;
+        }
+        #tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            padding: 5px;
+            display: none;
+        }
+        #legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .legend-rect {
+            width: 30px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Monthly Global Land-Surface Temperature</h1>
+    <p id="description">1753 - 2015: base temperature 8.66℃</p>
+    <div id="tooltip"></div>
+    <svg width="1000" height="500"></svg>
+    <div id="legend"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
