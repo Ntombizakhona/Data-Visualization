@@ -1,30 +1,16 @@
 // app.js
 
-// Education Data
-const educationData = 
-d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json')
-  .then(data => {
-    console.log(data); // The data is now stored in the 'data' variable
-    // You can now use 'data' to manipulate or visualize it
-  })
-  .catch(error => {
-    console.error('Error loading the data:', error);
-  });
+// URLs for the data
+const educationDataUrl = 'https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json';
+const countyDataUrl = 'https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json';
 
-// Counties Data
-
-  const counties = // Using D3.js
-d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json')
-  .then(data => {
-    console.log(data); // The data is now stored in the 'data' variable
-    // Process the TopoJSON data
-    const counties = topojson.feature(data, data.objects.counties).features;
-    console.log(counties); // This will log the GeoJSON features
-    // You can now use 'counties' to create visualizations
-  })
-  .catch(error => {
-    console.error('Error loading the data:', error);
-  });
+// Load the data
+Promise.all([
+  d3.json(educationDataUrl),
+  d3.json(countyDataUrl)
+]).then(([educationData, countyData]) => {
+  // Process the TopoJSON data
+  const counties = topojson.feature(countyData, countyData.objects.counties).features;
 
   // Set dimensions and margins
   const width = 960;
@@ -91,4 +77,6 @@ d3.json('https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/
     .style("height", "20px")
     .style("display", "inline-block")
     .style("margin-right", "5px");
+}).catch(error => {
+  console.error('Error loading the data:', error);
 });
